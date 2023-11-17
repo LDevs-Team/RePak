@@ -1,0 +1,56 @@
+﻿<Window x:Class="Pak.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pak"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+
+            <ItemsControl x:Name="ItemsController" ItemsSource="{Binding Packages}" Grid.ColumnSpan="1" Grid.Column="1">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+
+                    <Grid>
+
+
+
+                        <!-- Rounded Rectangle containing Name TextBlock and Description TextBlock -->
+                        <Border Grid.Column="1" Margin="10" BorderThickness="2.5px" BorderBrush="#3169ff" CornerRadius="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="125px"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    
+                                    <RowDefinition Height="Auto"/>
+                                    <!-- Row for Name TextBlock -->
+                                    <RowDefinition Height="Auto"/>
+                                    <!-- Row for Description TextBlock -->
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding Image}" Width="100px" Height="100px" Margin="10" Grid.RowSpan="2" Grid.Column="0"/>
+                                <!-- Name -->
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="5" Grid.Column="1"/>
+
+                                <!-- Description -->
+                                <TextBlock Text="{Binding Description}" Foreground="#222222" VerticalAlignment="Center" Grid.Row="1" Margin="5" Grid.Column="1"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+
+        <ProgressBar x:Name="LoadingBar" HorizontalAlignment="Center" Height="10" VerticalAlignment="Top" Width="100" Margin="0,235,0,0" IsIndeterminate="True"/>
+
+    </Grid>
+</Window>
